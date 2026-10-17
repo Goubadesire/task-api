@@ -1,0 +1,2 @@
+Projet 1 : TaskAPI, une API de gestion de tâches
+Les fondations : HTTP, REST, routes, contrôleurs, services, validation des données, gestion des erreurs, codes de statut. D’abord en mémoire, puis avec une vraie base de données.
