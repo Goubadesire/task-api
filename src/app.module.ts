@@ -10,7 +10,6 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
 @Module({
   imports: [
     TasksModule,
-
   ],
   controllers: [AppController],
   providers: [AppService],
