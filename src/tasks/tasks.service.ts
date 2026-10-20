@@ -52,4 +52,11 @@ export class TasksService {
 
         return tache
     }
+
+    remove(id: number){
+        this.findOne(id) //lève une 404 en cas d'absence de la tache
+
+        const index = tasks.findIndex((task) => task.id === id)
+        tasks.splice(index, 1) 
+    }
 }
