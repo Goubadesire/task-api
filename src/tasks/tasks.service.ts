@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto.js';
+import { UpdateTaskDto } from './dto/update-task.dto.js';
 
 const tasks = [
     { id: 1, title: 'Titre 1', done: true },
@@ -10,7 +11,7 @@ const tasks = [
 
 @Injectable()
 export class TasksService {
-    constructor(private readonly createTaskDto: CreateTaskDto){}
+    constructor(private readonly createTaskDto: CreateTaskDto, private readonly updateTaskDto: UpdateTaskDto){}
 
     findAll(){
         return tasks
@@ -38,5 +39,18 @@ export class TasksService {
 
         tasks.push(nouvelleTache)
         return tasks
+    }
+
+    update( id: number, updateTaskDto: UpdateTaskDto){
+        const tache =  this.findOne(id) //findOne lève une 404 si la tache n'existe pas
+
+        if(updateTaskDto.title !== undefined){
+            tache.title = updateTaskDto.title
+        }
+        if(updateTaskDto.done !== undefined){
+            tache.done = updateTaskDto.done
+        }
+
+        return tache
     }
 }
